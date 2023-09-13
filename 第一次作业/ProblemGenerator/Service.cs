@@ -36,7 +36,7 @@ namespace ProblemGenerator
 		public static event Action OnDisplayResult;
 		public static event Action OnNextProblem;
 		public static event Action OnDisplayScore;
-
+		
 		public static Problem Problem { get; set; }
 
 		public static int ProblemIndex { get; private set; } = 0;

@@ -39,7 +39,9 @@ namespace ProblemGenerator
 			tmrResult.Start();
 			btnNext.Enabled = false;
 			txtAnswer.BackColor = Service.Problem.Result ? Color.Lime : Color.Red;
-			txtAnswer.Enabled = false;
+			txtAnswer.ReadOnly = true;
+			txtAnswer.SelectionStart = 0;
+			txtAnswer.SelectionLength = 0;
 		}
 
 		private void NextProblem()
@@ -49,7 +51,7 @@ namespace ProblemGenerator
 			btnNext.Enabled = true;
 			txtAnswer.BackColor = SystemColors.Window;
 			txtAnswer.Text = string.Empty;
-			txtAnswer.Enabled = true;
+			txtAnswer.ReadOnly = false;
 			lblProblem.Text = Service.Problem.Operand1 + " " + (Service.Problem.Operator == Operator.Addition ? "+" : "-") + " " + Service.Problem.Operand2;
 			btnNext.Text = Service.ProblemIndex == Service.TotalProblemCnt ? "交卷" : "下一题";
 			lblProgress.Text = "题目：" + Service.ProblemIndex + "/" + Service.TotalProblemCnt;
