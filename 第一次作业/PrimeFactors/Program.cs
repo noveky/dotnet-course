@@ -12,6 +12,7 @@ namespace PrimeFactors
 		{
 			try
 			{
+				Console.Title = "Prime Factors";
 				Console.Write("Enter a number: ");
 				Console.ForegroundColor = ConsoleColor.Yellow;
 				int num = int.Parse(Console.ReadLine());
