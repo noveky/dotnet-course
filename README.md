@@ -1,6 +1,6 @@
-# dotnet-course
+# .NET Course
 
-.net架构程序设计课程
+.NET 架构程序设计课程
 
 ### 第一次作业
 - Hello, world!
