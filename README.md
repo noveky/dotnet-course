@@ -6,3 +6,6 @@
 - Hello, world!
 - 素数因子分解
 - 口算自动出题机
+
+### 第二次作业
+WinForm ATM 机模拟器
