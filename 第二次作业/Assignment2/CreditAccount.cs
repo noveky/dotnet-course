@@ -14,14 +14,11 @@ namespace Assignment2
 		{
 			CreditLimit = creditLimit;
 		}
+		public override string ToString() => $"{{ 类型: 信用账户, 账号: {Id}, 密码: {Passcode}, 余额: {Balance}, 信用额度: {CreditLimit} }}";
 
-		public override void Withdraw(decimal amount)
+		public override bool CanWithdraw(decimal amount)
 		{
-			if (Balance - amount < -CreditLimit)
-			{
-				throw new Exception("超出信用额度，取款失败");
-			}
-			Balance -= amount;
+			return Balance - amount >= -CreditLimit;
 		}
 	}
 }

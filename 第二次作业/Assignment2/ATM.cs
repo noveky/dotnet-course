@@ -8,6 +8,100 @@ namespace Assignment2
 {
 	class ATM
 	{
-		
+		readonly Bank bank;
+		Account? account = null;
+
+		decimal _cash = 10000.00M;
+		const double rateOfBadCash = 0.3;
+		class OutOfCashException : Exception { }
+		class BadCashException : Exception { }
+		decimal Cash
+		{
+			get => _cash;
+			set
+			{
+				if (value < 0)
+				{
+					throw new OutOfCashException();
+				}
+				if (value < _cash)
+				{
+					Random rnd = new();
+					if (rnd.NextDouble() <= rateOfBadCash)
+					{
+						throw new BadCashException();
+					}
+				}
+				_cash = value;
+			}
+		}
+
+		public event Action<string> Log = _ => { };
+
+		public ATM(Bank bank)
+		{
+			this.bank = bank;
+		}
+
+		public void Login(string accountId, string passcode)
+		{
+			account = bank.Authenticate(accountId, passcode);
+
+			Log($"登入成功，当前余额为 {account.Balance}");
+		}
+
+		public void Logout()
+		{
+			account = null;
+
+			Log($"登出成功");
+		}
+
+		void CheckLogin()
+		{
+			if (account == null)
+			{
+				throw new Exception("没有登录账户，操作失败");
+			}
+		}
+
+		public void Deposit(decimal amount)
+		{
+			CheckLogin();
+
+			Cash += amount;
+
+			account!.Deposit(amount);
+
+			Log($"存款成功，当前余额为 {account.Balance}");
+		}
+
+		public void Withdraw(decimal amount)
+		{
+			CheckLogin();
+
+			if (!account!.CanWithdraw(amount))
+			{
+				// 调用，使其抛出异常，直接结束
+				account.Withdraw(amount);
+			}
+
+			try
+			{
+				Cash -= amount;
+			}
+			catch (BadCashException ex)
+			{
+				throw new Exception("检测到坏钞，取款失败", ex);
+			}
+			catch (OutOfCashException ex)
+			{
+				throw new Exception("ATM 机现金不足，取款失败", ex);
+			}
+
+			account.Withdraw(amount);
+
+			Log($"取款完成，当前余额为 {account.Balance}");
+		}
 	}
 }

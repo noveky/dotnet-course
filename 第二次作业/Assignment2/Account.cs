@@ -13,12 +13,12 @@ namespace Assignment2
 			get => id;
 			set
 			{
-				if (value.Length != 8) throw new Exception("账号只能为8位");
+				if (value.Length != 8) throw new Exception("账号只能为 8 位");
 				foreach (char ch in value)
 				{
 					if (!char.IsDigit(ch)) throw new Exception("账号只能为数字");
 				}
-				id = value; 
+				id = value;
 			}
 		}
 		public string Passcode
@@ -26,7 +26,7 @@ namespace Assignment2
 			get => passcode;
 			set
 			{
-				if (value.Length != 6) throw new Exception("密码只能为6位");
+				if (value.Length != 6) throw new Exception("密码只能为 6 位");
 				foreach (char ch in value)
 				{
 					if (!char.IsDigit(ch)) throw new Exception("密码只能为数字");
@@ -46,16 +46,24 @@ namespace Assignment2
 			Passcode = "000000";
 		}
 
+		public override string ToString() => $"{{ 类型: 普通账户, 账号: {Id}, 密码: {Passcode}, 余额: {Balance} }}";
+
 		public void Deposit(decimal amount)
 		{
 			Balance += amount;
 		}
 
-		public virtual void Withdraw(decimal amount)
+		public virtual bool CanWithdraw(decimal amount)
 		{
-			if (Balance - amount < 0)
+			return Balance - amount >= 0;
+		}
+
+		public void Withdraw(decimal amount)
+		{
+			if (!CanWithdraw(amount))
 			{
-				throw new Exception("余额不足，取款失败");
+				if (this is CreditAccount) throw new Exception("超出信用额度，取款失败");
+				else throw new Exception("账户余额不足，取款失败");
 			}
 			Balance -= amount;
 		}
