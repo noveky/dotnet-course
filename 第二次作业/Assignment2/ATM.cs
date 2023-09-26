@@ -95,7 +95,7 @@ namespace Assignment2
 
 			account!.Deposit(amount);
 
-			Log($"存款成功，当前余额为 {account.Balance}");
+			Log($"{amount} 存款成功，当前余额为 {account.Balance}");
 		}
 
 		public void Withdraw(decimal amount)
@@ -124,7 +124,7 @@ namespace Assignment2
 				BigMoneyFetched(new() { Amount = amount });
 			}
 
-			Log($"取款成功，当前余额为 {account.Balance}");
+			Log($"{amount} 取款成功，当前余额为 {account.Balance}");
 		}
 	}
 }
