@@ -24,7 +24,7 @@ namespace Assignment2
 				{
 					throw new OutOfCashException();
 				}
-				if (value < _cash)
+				if (value > _cash)
 				{
 					Random rnd = new();
 					if (rnd.NextDouble() <= rateOfBadCash)
@@ -45,16 +45,25 @@ namespace Assignment2
 
 		public void Login(string accountId, string passcode)
 		{
+			if (account != null)
+			{
+				Logout();
+			}
+
 			account = bank.Authenticate(accountId, passcode);
 
-			Log($"登入成功，当前余额为 {account.Balance}");
+			Log($"账号 {accountId} 登入成功，当前余额为 {account.Balance}");
 		}
 
 		public void Logout()
 		{
+			CheckLogin();
+
+			string accountId = account!.Id;
+
 			account = null;
 
-			Log($"登出成功");
+			Log($"账号 {accountId} 登出成功");
 		}
 
 		void CheckLogin()
@@ -69,7 +78,14 @@ namespace Assignment2
 		{
 			CheckLogin();
 
-			Cash += amount;
+			try
+			{
+				Cash += amount;
+			}
+			catch (BadCashException ex)
+			{
+				throw new Exception("检测到坏钞，存款失败", ex);
+			}
 
 			account!.Deposit(amount);
 
@@ -90,10 +106,6 @@ namespace Assignment2
 			{
 				Cash -= amount;
 			}
-			catch (BadCashException ex)
-			{
-				throw new Exception("检测到坏钞，取款失败", ex);
-			}
 			catch (OutOfCashException ex)
 			{
 				throw new Exception("ATM 机现金不足，取款失败", ex);
@@ -101,7 +113,7 @@ namespace Assignment2
 
 			account.Withdraw(amount);
 
-			Log($"取款完成，当前余额为 {account.Balance}");
+			Log($"取款成功，当前余额为 {account.Balance}");
 		}
 	}
 }

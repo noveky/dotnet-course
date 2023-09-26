@@ -28,10 +28,10 @@ namespace Assignment2
 				if (account.Id == accountId)
 				{
 					if (account.Passcode == passcode) return account;
-					throw new Exception("密码错误，验证失败");
+					throw new Exception($"账号 {accountId} 密码错误，验证失败");
 				}
 			}
-			throw new Exception("账号不存在，验证失败");
+			throw new Exception($"账号 {accountId} 不存在，验证失败");
 		}
 	}
 }
