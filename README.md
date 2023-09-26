@@ -1,4 +1,4 @@
-# .NET Course
+# .NET 课程
 
 .NET 架构程序设计课程
 
