@@ -11,6 +11,12 @@ namespace Assignment2
 		readonly Bank bank;
 		Account? account = null;
 
+		public class BigMoneyArgs
+		{
+			public decimal Amount { get; set; }
+		}
+		public event Action<BigMoneyArgs> BigMoneyFetched = _ => { };
+
 		decimal _cash = 10000.00M;
 		const double rateOfBadCash = 0.3;
 		class OutOfCashException : Exception { }
@@ -112,6 +118,11 @@ namespace Assignment2
 			}
 
 			account.Withdraw(amount);
+
+			if (amount > 10000.00M)
+			{
+				BigMoneyFetched(new() { Amount = amount });
+			}
 
 			Log($"取款成功，当前余额为 {account.Balance}");
 		}

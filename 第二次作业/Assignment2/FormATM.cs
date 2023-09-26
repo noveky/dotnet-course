@@ -28,6 +28,7 @@ namespace Assignment2
 
 			atm = new(bank);
 
+			atm.BigMoneyFetched += args => LogWarning($"进行了 {args.Amount} 的大额取款");
 			atm.Log += text => Log(text);
 		}
 
@@ -72,6 +73,8 @@ namespace Assignment2
 		}
 
 		public void LogError(Exception ex) { Log($"错误：{ex.Message}", Color.Red); }
+
+		public void LogWarning(string text) { Log($"警告：{text}", Color.DarkMagenta); }
 
 		private void btnLogin_Click(object sender, EventArgs e)
 		{
