@@ -1,8 +1,11 @@
-# dotnet-course
+# .NET Course
 
-.net架构程序设计课程
+.NET 架构程序设计课程
 
 ### 第一次作业
 - Hello, world!
 - 素数因子分解
 - 口算自动出题机
+
+### 第二次作业
+WinForm ATM 机模拟器
