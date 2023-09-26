@@ -22,9 +22,9 @@ namespace Assignment2
 			accounts[1].Deposit(4000.00M);
 			accounts[2].Deposit(2000.00M);
 
-			Log("初始账户：[");
-			accounts.ForEach(a => Log($"{a},"));
-			Log("]");
+			Log("初始账户：[", Color.Gray);
+			accounts.ForEach(a => Log($"{a},", Color.Gray));
+			Log("]", Color.Gray);
 
 			atm = new(bank);
 
