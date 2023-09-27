@@ -18,7 +18,6 @@ namespace Assignment2
 		public event Action<BigMoneyArgs> BigMoneyFetched = _ => { };
 
 		decimal _cash = 10000.00M;
-		const double rateOfBadCash = 0.3;
 		class OutOfCashException : Exception { }
 		class BadCashException : Exception { }
 		decimal Cash
@@ -33,7 +32,7 @@ namespace Assignment2
 				if (value > _cash)
 				{
 					Random rnd = new();
-					if (rnd.NextDouble() < rateOfBadCash)
+					if (rnd.NextDouble() < 0.3)
 					{
 						throw new BadCashException();
 					}
