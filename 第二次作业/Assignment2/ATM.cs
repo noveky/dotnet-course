@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,7 +33,7 @@ namespace Assignment2
 				if (value > _cash)
 				{
 					Random rnd = new();
-					if (rnd.NextDouble() <= rateOfBadCash)
+					if (rnd.NextDouble() < rateOfBadCash)
 					{
 						throw new BadCashException();
 					}
