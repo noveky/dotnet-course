@@ -21,7 +21,7 @@ namespace Assignment3
 				{
 					line = line[0..remPos].Trim();
 				}
-				if (line != string.Empty)
+				if (line.Trim() != string.Empty)
 				{
 					builder.AppendLine(line);
 				}
@@ -30,19 +30,11 @@ namespace Assignment3
 		}
 
 		public static List<KeyValuePair<string, int>> CountWords(string code)
-		{
-			return Regex.Matches(code, @"\b\w+\b")
-						.Cast<Match>()
-						.Select(m => m.Value)
-						.GroupBy(w => w)
-						.Select(g => new KeyValuePair<string, int>(g.Key, g.Count()))
-						.OrderByDescending(g => g.Value)
-						.ToList();
-			string[] words = code.Split(new char[] { ' ', '\n', '\r', '\t', ',', ';', '+', '-', '*', '/', '=', '*', '%', '$', '#', '@', '!', '~', '.', '[', ']', '(', ')', '{', '}', '\\', '<', '>', '"', '\'', '^', '|' , '_' }, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
-			return words.GroupBy(w => w)
-						 .Select(g => new KeyValuePair<string, int>(g.Key, g.Count()))
-						 .OrderByDescending(g => g.Value)
-						 .ToList();
-		}
+			=> Regex.Matches(code, @"([A-Z]?[a-z]+\b)|([A-Z]+\b)|([A-Z]+(?=[A-Z][a-z]+))")
+					.Select(m => m.Value)
+					.GroupBy(w => w.ToList().All(char.IsUpper) ? w : w.ToLower())
+					.Select(g => new KeyValuePair<string, int>(g.Key, g.Count()))
+					.OrderByDescending(g => g.Value)
+					.ToList();
 	}
 }
