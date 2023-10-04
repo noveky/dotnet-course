@@ -1,36 +1,17 @@
-﻿using System.Reflection;
-
 namespace Assignment3
 {
-	internal class Program
+	internal static class Program
 	{
-		static void Main(string[] args)
+		/// <summary>
+		///  The main entry point for the application.
+		/// </summary>
+		[STAThread]
+		static void Main()
 		{
-			try
-			{
-				Console.Title = "代码格式化与统计";
-
-				string path = "Code.cs";
-				string code = File.ReadAllText(path);
-
-				ConsoleIO.PrintLn("去除注释和空行后的代码：", ConsoleColor.White);
-				string formattedCode = CodeProcessor.Format(code);
-				ConsoleIO.PrintLn(CodeProcessor.Format(formattedCode));
-				ConsoleIO.PrintLn();
-
-				ConsoleIO.PrintLn("格式化后代码的词频统计：", ConsoleColor.White);
-				CodeProcessor.CountWords(formattedCode).ForEach(p =>
-				{
-					ConsoleIO.Print($"{p.Key}: ");
-					ConsoleIO.PrintLn($"{p.Value}", ConsoleColor.Yellow);
-				});
-
-				Console.ReadKey();
-			}
-			catch (Exception ex)
-			{
-				ConsoleIO.LogError(ex);
-			}
+			// To customize application configuration such as set high DPI settings or default font,
+			// see https://aka.ms/applicationconfiguration.
+			ApplicationConfiguration.Initialize();
+			Application.Run(new FormMain());
 		}
 	}
 }
