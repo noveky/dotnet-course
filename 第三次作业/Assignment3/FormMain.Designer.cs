@@ -37,9 +37,9 @@
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.rtbCounts = new System.Windows.Forms.RichTextBox();
 			this.panel3 = new System.Windows.Forms.Panel();
+			this.btnClear = new System.Windows.Forms.Button();
 			this.btnFormat = new System.Windows.Forms.Button();
 			this.rtbCode = new System.Windows.Forms.RichTextBox();
-			this.btnClear = new System.Windows.Forms.Button();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.panel4.SuspendLayout();
@@ -142,13 +142,23 @@
 			this.panel3.Size = new System.Drawing.Size(274, 42);
 			this.panel3.TabIndex = 5;
 			// 
+			// btnClear
+			// 
+			this.btnClear.Location = new System.Drawing.Point(144, 6);
+			this.btnClear.Name = "btnClear";
+			this.btnClear.Size = new System.Drawing.Size(110, 28);
+			this.btnClear.TabIndex = 6;
+			this.btnClear.Text = "清空";
+			this.btnClear.UseVisualStyleBackColor = true;
+			this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+			// 
 			// btnFormat
 			// 
 			this.btnFormat.Location = new System.Drawing.Point(20, 6);
 			this.btnFormat.Name = "btnFormat";
 			this.btnFormat.Size = new System.Drawing.Size(110, 28);
 			this.btnFormat.TabIndex = 5;
-			this.btnFormat.Text = "格式化";
+			this.btnFormat.Text = "格式化并统计";
 			this.btnFormat.UseVisualStyleBackColor = true;
 			this.btnFormat.Click += new System.EventHandler(this.btnFormat_Click);
 			// 
@@ -166,16 +176,6 @@
 			this.rtbCode.TabIndex = 8;
 			this.rtbCode.Text = "";
 			this.rtbCode.TextChanged += new System.EventHandler(this.rtbCode_TextChanged);
-			// 
-			// btnClear
-			// 
-			this.btnClear.Location = new System.Drawing.Point(144, 6);
-			this.btnClear.Name = "btnClear";
-			this.btnClear.Size = new System.Drawing.Size(110, 28);
-			this.btnClear.TabIndex = 6;
-			this.btnClear.Text = "清空";
-			this.btnClear.UseVisualStyleBackColor = true;
-			this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
 			// 
 			// FormMain
 			// 
