@@ -122,7 +122,7 @@ namespace Assignment3
 				rtbCounts.AppendText($": {p.Value}\n");
 			});
 
-			int[] colors = { 0x75BDE0, 0xF8DE9B, 0xF89B8B, 0xA5E798 };
+			int[] colors = { 0x95CDF0, 0xF8DE9B, 0xF89B8B, 0xA5E798 };
 			int colorIndex = 0;
 			CodeProcessor.GetWordRanges(Code).ForEach(r =>
 			{
