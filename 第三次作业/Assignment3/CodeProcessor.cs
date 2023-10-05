@@ -62,6 +62,7 @@ namespace Assignment3
 			}
 			""";
 
+		// 按要求格式化代码，即去掉空行和注释（仅考虑“//”开头的，且不考虑包含在字符串中等复杂情况）
 		public static string Format(string code)
 		{
 			string[] lines = code.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
@@ -82,25 +83,30 @@ namespace Assignment3
 			return builder.ToString();
 		}
 
-		public static List<Range> GetRanges(MatchCollection matches)
+		// 获取匹配集中所有匹配位置和长度的列表
+		public static List<(int Index, int Length)> GetMatchRanges(MatchCollection matches)
 			=> matches
-				.Select(m => new Range(m.Index, m.Index + m.Length))
+				.Select(m => (m.Index, m.Length))
 				.ToList();
 
+		// 正则表达式匹配英文单词
 		[GeneratedRegex("((?<![0-9][A-Za-z]*)[A-Z]?[a-z]+)|((?<![0-9][A-Za-z]*)[A-Z]+(?![a-z]+))")]
 		public static partial Regex WordRegex();
-		static MatchCollection WordMatches(string code) => WordRegex().Matches(code);
+		static MatchCollection WordMatches(string code)
+			=> WordRegex().Matches(code);
 
-		public static List<KeyValuePair<string, int>> CountWords(string code)
+		// 对代码进行统计词频，降序排序，并转换为 (string, int) 列表表示
+		public static List<(string Word, int Count)> GetWordCounts(string code)
 			=> WordMatches(code)
 				.Select(m => m.Value)
 				//.GroupBy(w => w.ToList().All(char.IsUpper) ? w : w.ToLower())
 				.GroupBy(w => w.ToLower())
-				.Select(g => new KeyValuePair<string, int>(g.Key, g.Count()))
-				.OrderByDescending(g => g.Value)
+				.Select(g => (g.Key, g.Count()))
+				.OrderByDescending(g => g.Item2)
 				.ToList();
 
-		public static List<Range> GetWordRanges(string code)
-			=> GetRanges(WordMatches(code));
+		// 获取代码中所有单词位置和长度的列表
+		public static List<(int Index, int Length)> GetWordRanges(string code)
+			=> GetMatchRanges(WordMatches(code));
 	}
 }
