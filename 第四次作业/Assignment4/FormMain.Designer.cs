@@ -84,19 +84,19 @@
 			// 详细信息ToolStripMenuItem
 			// 
 			this.详细信息ToolStripMenuItem.Name = "详细信息ToolStripMenuItem";
-			this.详细信息ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+			this.详细信息ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.详细信息ToolStripMenuItem.Text = "详细信息";
 			// 
 			// 列表ToolStripMenuItem
 			// 
 			this.列表ToolStripMenuItem.Name = "列表ToolStripMenuItem";
-			this.列表ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+			this.列表ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.列表ToolStripMenuItem.Text = "列表";
 			// 
 			// 平铺ToolStripMenuItem
 			// 
 			this.平铺ToolStripMenuItem.Name = "平铺ToolStripMenuItem";
-			this.平铺ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+			this.平铺ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.平铺ToolStripMenuItem.Text = "平铺";
 			// 
 			// panel1
