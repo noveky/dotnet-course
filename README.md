@@ -13,6 +13,7 @@
 - 素数因子分解
 
 ![运行截图 1](%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/PrimeFactors-1.png)
+
 - 口算自动出题机
 
 ![运行截图 1](%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/ProblemGenerator-1.png)
