@@ -35,8 +35,8 @@
 			this.tsiView_List = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsiView_Tile = new System.Windows.Forms.ToolStripMenuItem();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.cboDirPath = new System.Windows.Forms.ComboBox();
 			this.btnRefresh = new System.Windows.Forms.Button();
-			this.txtDirPath = new System.Windows.Forms.TextBox();
 			this.btnUp = new System.Windows.Forms.Button();
 			this.btnForward = new System.Windows.Forms.Button();
 			this.btnBack = new System.Windows.Forms.Button();
@@ -104,8 +104,8 @@
 			// 
 			// panel1
 			// 
+			this.panel1.Controls.Add(this.cboDirPath);
 			this.panel1.Controls.Add(this.btnRefresh);
-			this.panel1.Controls.Add(this.txtDirPath);
 			this.panel1.Controls.Add(this.btnUp);
 			this.panel1.Controls.Add(this.btnForward);
 			this.panel1.Controls.Add(this.btnBack);
@@ -115,6 +115,18 @@
 			this.panel1.Size = new System.Drawing.Size(846, 36);
 			this.panel1.TabIndex = 1;
 			this.panel1.TabStop = true;
+			// 
+			// cboDirPath
+			// 
+			this.cboDirPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.cboDirPath.FormattingEnabled = true;
+			this.cboDirPath.Location = new System.Drawing.Point(111, 5);
+			this.cboDirPath.Name = "cbDirPath";
+			this.cboDirPath.Size = new System.Drawing.Size(694, 25);
+			this.cboDirPath.TabIndex = 5;
+			this.cboDirPath.DropDown += new System.EventHandler(this.txtDirPath_DropDown);
+			this.cboDirPath.SelectedValueChanged += new System.EventHandler(this.txtDirPath_SelectedValueChanged);
 			// 
 			// btnRefresh
 			// 
@@ -126,16 +138,6 @@
 			this.btnRefresh.TabIndex = 4;
 			this.btnRefresh.Text = "↻";
 			this.btnRefresh.UseVisualStyleBackColor = true;
-			// 
-			// txtDirPath
-			// 
-			this.txtDirPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.txtDirPath.Location = new System.Drawing.Point(111, 6);
-			this.txtDirPath.Name = "txtDirPath";
-			this.txtDirPath.Size = new System.Drawing.Size(694, 23);
-			this.txtDirPath.TabIndex = 3;
-			this.txtDirPath.Leave += new System.EventHandler(this.txtDir_Leave);
 			// 
 			// btnUp
 			// 
@@ -250,7 +252,6 @@
 			this.toolStrip1.ResumeLayout(false);
 			this.toolStrip1.PerformLayout();
 			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
 			this.splitContainer1.Panel1.ResumeLayout(false);
 			this.splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -271,7 +272,6 @@
 		private Button btnBack;
 		private Button btnForward;
 		private Button btnUp;
-		private TextBox txtDirPath;
 		private Button btnRefresh;
 		private SplitContainer splitContainer1;
 		private TreeView trvHierarchy;
@@ -280,5 +280,6 @@
 		private ColumnHeader columnHeader2;
 		private ColumnHeader columnHeader3;
 		private ColumnHeader columnHeader4;
+		private ComboBox cboDirPath;
 	}
 }

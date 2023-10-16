@@ -15,6 +15,8 @@ namespace Assignment4
 			{
 				Path = path;
 			}
+
+			public override string ToString() => Path;
 		}
 
 		DirHistoryNode CurrentDir;
@@ -60,7 +62,7 @@ namespace Assignment4
 				}
 				finally
 				{
-					txtDirPath.Text = CurrentDir.Path;
+					cboDirPath.Text = CurrentDir.Path;
 
 					if (ex_ != null)
 					{
@@ -258,7 +260,7 @@ namespace Assignment4
 		protected override bool ProcessDialogKey(Keys keyData)
 		{
 			// 在路径文本框按下回车时，将控件焦点去掉，触发Leave事件
-			if (ActiveControl == txtDirPath && keyData == Keys.Return)
+			if (ActiveControl == cboDirPath && keyData == Keys.Return)
 			{
 				ActiveControl = null;
 				return true;
@@ -269,7 +271,7 @@ namespace Assignment4
 
 		private void txtDir_Leave(object sender, EventArgs e)
 		{
-			DirPath = txtDirPath.Text;
+			DirPath = cboDirPath.Text;
 		}
 
 		private void tsiView_Details_Click(object sender, EventArgs e)
@@ -308,6 +310,28 @@ namespace Assignment4
 			if (CurrentDir.Next == null) return;
 
 			CurrentDir = CurrentDir.Next;
+			UpdateDirPath();
+		}
+
+		private void txtDirPath_DropDown(object sender, EventArgs e)
+		{
+			cboDirPath.EndUpdate();
+			cboDirPath.BeginUpdate();
+
+			cboDirPath.Items.Clear();
+			DirHistoryNode? n = CurrentDir;
+			for (; n.Prev != null; n = n.Prev) ;
+			for (; n != null; n = n.Next)
+			{
+				cboDirPath.Items.Add(n);
+			}
+
+			cboDirPath.EndUpdate();
+		}
+
+		private void txtDirPath_SelectedValueChanged(object sender, EventArgs e)
+		{
+			CurrentDir = (DirHistoryNode)cboDirPath.SelectedItem;
 			UpdateDirPath();
 		}
 	}
