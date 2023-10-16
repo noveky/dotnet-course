@@ -16,8 +16,8 @@ namespace Assignment4
 				Path = path;
 			}
 		}
-		DirHistoryNode CurrentDir;
 
+		DirHistoryNode CurrentDir;
 		const string startDirPath = "C:\\";
 		string DirPath
 		{
@@ -37,9 +37,21 @@ namespace Assignment4
 					{
 						CheckDirAvailability(value);
 
+						// 向历史记录链表插入新结点
 						DirHistoryNode lastDir = CurrentDir;
 						CurrentDir = new(value) { Prev = lastDir };
 						lastDir.Next = CurrentDir;
+
+						// 历史记录去重
+						for (DirHistoryNode? n = lastDir; n != null; n = n.Prev)
+						{
+							if (n.Path == value)
+							{
+								// 删除路径相同的历史记录结点
+								if (n.Prev != null) n.Prev.Next = n.Next;
+								if (n.Next != null) n.Next.Prev = n.Prev;
+							}
+						}
 					}
 				}
 				catch (Exception ex)
