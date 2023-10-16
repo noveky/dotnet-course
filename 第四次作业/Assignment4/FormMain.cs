@@ -19,47 +19,40 @@ namespace Assignment4
 		DirHistoryNode CurrentDir;
 
 		const string startDirPath = "C:\\";
-		string? lastDirPath = null;
 		string DirPath
 		{
 			get => CurrentDir.Path;
 
 			set
 			{
-				Exception? exception = null;
+				Exception? ex_ = null;
 				try
 				{
 					if (string.IsNullOrEmpty(value)) return;
 
-					lastDirPath ??= startDirPath;
-
 					// 将路径的写法标准化
 					value = FileUtility.StandardizePath(value);
 
-					CheckDirAvailability(value);
+					if (DirPath != value)
+					{
+						CheckDirAvailability(value);
 
-					CurrentDir.Path = lastDirPath = value;
+						DirHistoryNode lastDir = CurrentDir;
+						CurrentDir = new(value) { Prev = lastDir };
+						lastDir.Next = CurrentDir;
+					}
 				}
 				catch (Exception ex)
 				{
-					try
-					{
-						CurrentDir.Path = lastDirPath!;
-					}
-					catch
-					{
-						CurrentDir.Path = string.Empty;
-					}
-
-					exception = ex;
+					ex_ = ex;
 				}
 				finally
 				{
 					txtDirPath.Text = CurrentDir.Path;
 
-					if (exception != null)
+					if (ex_ != null)
 					{
-						ShowError(exception.Message); // 放在后面是因为弹出消息框之后会再触发一次 Leave，如果此时 txtDirPath 的文本仍保持原样会再次提示错误
+						ShowError(ex_.Message); // 放在后面是因为弹出消息框之后会再触发一次 Leave，如果此时 txtDirPath 的文本仍保持原样会再次提示错误
 					}
 
 					UpdateDisplay();
@@ -89,7 +82,7 @@ namespace Assignment4
 			InitializeComponent();
 
 			CurrentDir = new(startDirPath);
-			DirPath = CurrentDir.Path;
+			UpdateDirPath();
 			InitTreeView();
 		}
 
@@ -103,6 +96,9 @@ namespace Assignment4
 				GenerateSubnodes(node);
 			}
 		}
+
+		// 每次给 CurrentDir 赋值后需要用 DirPath 的 setter 通知控件更新
+		void UpdateDirPath() => DirPath = CurrentDir.Path;
 
 		void UpdateDisplay()
 		{
@@ -285,6 +281,22 @@ namespace Assignment4
 		private void btnUp_Click(object sender, EventArgs e)
 		{
 			DirPath = Path.Combine(DirPath, "..");
+		}
+
+		private void btnBack_Click(object sender, EventArgs e)
+		{
+			if (CurrentDir.Prev == null) return;
+
+			CurrentDir = CurrentDir.Prev;
+			UpdateDirPath();
+		}
+
+		private void btnForward_Click(object sender, EventArgs e)
+		{
+			if (CurrentDir.Next == null) return;
+
+			CurrentDir = CurrentDir.Next;
+			UpdateDirPath();
 		}
 	}
 }
