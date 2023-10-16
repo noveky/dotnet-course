@@ -31,9 +31,9 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
-			this.详细信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.列表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.平铺ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsiView_Details = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsiView_List = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsiView_Tile = new System.Windows.Forms.ToolStripMenuItem();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.btnRefresh = new System.Windows.Forms.Button();
 			this.txtDirPath = new System.Windows.Forms.TextBox();
@@ -72,32 +72,35 @@
 			this.toolStripSplitButton1.AutoSize = false;
 			this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
 			this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.详细信息ToolStripMenuItem,
-            this.列表ToolStripMenuItem,
-            this.平铺ToolStripMenuItem});
+            this.tsiView_Details,
+            this.tsiView_List,
+            this.tsiView_Tile});
 			this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
 			this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.toolStripSplitButton1.Name = "toolStripSplitButton1";
 			this.toolStripSplitButton1.Size = new System.Drawing.Size(60, 30);
 			this.toolStripSplitButton1.Text = "查看";
 			// 
-			// 详细信息ToolStripMenuItem
+			// tsiView_Details
 			// 
-			this.详细信息ToolStripMenuItem.Name = "详细信息ToolStripMenuItem";
-			this.详细信息ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.详细信息ToolStripMenuItem.Text = "详细信息";
+			this.tsiView_Details.Name = "tsiView_Details";
+			this.tsiView_Details.Size = new System.Drawing.Size(124, 22);
+			this.tsiView_Details.Text = "详细信息";
+			this.tsiView_Details.Click += new System.EventHandler(this.tsiView_Details_Click);
 			// 
-			// 列表ToolStripMenuItem
+			// tsiView_List
 			// 
-			this.列表ToolStripMenuItem.Name = "列表ToolStripMenuItem";
-			this.列表ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.列表ToolStripMenuItem.Text = "列表";
+			this.tsiView_List.Name = "tsiView_List";
+			this.tsiView_List.Size = new System.Drawing.Size(124, 22);
+			this.tsiView_List.Text = "列表";
+			this.tsiView_List.Click += new System.EventHandler(this.tsiView_List_Click);
 			// 
-			// 平铺ToolStripMenuItem
+			// tsiView_Tile
 			// 
-			this.平铺ToolStripMenuItem.Name = "平铺ToolStripMenuItem";
-			this.平铺ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.平铺ToolStripMenuItem.Text = "平铺";
+			this.tsiView_Tile.Name = "tsiView_Tile";
+			this.tsiView_Tile.Size = new System.Drawing.Size(124, 22);
+			this.tsiView_Tile.Text = "平铺";
+			this.tsiView_Tile.Click += new System.EventHandler(this.tsiView_Tile_Click);
 			// 
 			// panel1
 			// 
@@ -143,6 +146,7 @@
 			this.btnUp.TabIndex = 2;
 			this.btnUp.Text = "↑";
 			this.btnUp.UseVisualStyleBackColor = true;
+			this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
 			// 
 			// btnForward
 			// 
@@ -185,12 +189,14 @@
 			// trvHierarchy
 			// 
 			this.trvHierarchy.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.trvHierarchy.FullRowSelect = true;
 			this.trvHierarchy.Location = new System.Drawing.Point(0, 0);
 			this.trvHierarchy.Name = "trvHierarchy";
 			this.trvHierarchy.Size = new System.Drawing.Size(269, 490);
 			this.trvHierarchy.TabIndex = 2;
 			this.trvHierarchy.TabStop = false;
+			this.trvHierarchy.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.trvHierarchy_AfterCollapse);
+			this.trvHierarchy.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.trvHierarchy_AfterExpand);
+			this.trvHierarchy.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.trvHierarchy_NodeMouseClick);
 			// 
 			// lstDir
 			// 
@@ -207,6 +213,7 @@
 			this.lstDir.TabIndex = 2;
 			this.lstDir.UseCompatibleStateImageBehavior = false;
 			this.lstDir.View = System.Windows.Forms.View.Details;
+			this.lstDir.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstDir_MouseDoubleClick);
 			// 
 			// columnHeader1
 			// 
@@ -255,9 +262,9 @@
 
 		private ToolStrip toolStrip1;
 		private ToolStripSplitButton toolStripSplitButton1;
-		private ToolStripMenuItem 详细信息ToolStripMenuItem;
-		private ToolStripMenuItem 列表ToolStripMenuItem;
-		private ToolStripMenuItem 平铺ToolStripMenuItem;
+		private ToolStripMenuItem tsiView_Details;
+		private ToolStripMenuItem tsiView_List;
+		private ToolStripMenuItem tsiView_Tile;
 		private Panel panel1;
 		private Button btnBack;
 		private Button btnForward;

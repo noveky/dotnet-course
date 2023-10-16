@@ -30,5 +30,11 @@ namespace Assignment4
 				return $"{fileSize:G3} {units[unitIndex]}";
 			}
 		}
+
+		public static string StandardizePath(string path, string? basePath = null, char separator = '\\')
+		{
+			return Path.GetFullPath(path.Trim().Replace('\\', '/').TrimEnd('/'), basePath ?? Path.GetPathRoot(path) ?? ".").Replace('\\', separator);
+		}
+		public static string StandardizePath(string path, char separator) => StandardizePath(path, null, separator);
 	}
 }
