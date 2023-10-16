@@ -21,7 +21,7 @@
 
 ![](%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/ProblemGenerator-2.png)
 
-![(%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/ProblemGenerator-3.png)
+![](%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/ProblemGenerator-3.png)
 
 ![](%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/ProblemGenerator-4.png)
 
