@@ -332,5 +332,10 @@ namespace Assignment4
 			CurrentDir = (DirHistoryNode)cboDirPath.SelectedItem;
 			UpdateDirPath();
 		}
+
+		private void btnRefresh_Click(object sender, EventArgs e)
+		{
+			UpdateDirList();
+		}
 	}
 }

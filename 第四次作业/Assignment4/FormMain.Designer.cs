@@ -122,7 +122,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.cboDirPath.FormattingEnabled = true;
 			this.cboDirPath.Location = new System.Drawing.Point(111, 5);
-			this.cboDirPath.Name = "cbDirPath";
+			this.cboDirPath.Name = "cboDirPath";
 			this.cboDirPath.Size = new System.Drawing.Size(694, 25);
 			this.cboDirPath.TabIndex = 5;
 			this.cboDirPath.DropDown += new System.EventHandler(this.txtDirPath_DropDown);
@@ -138,6 +138,7 @@
 			this.btnRefresh.TabIndex = 4;
 			this.btnRefresh.Text = "↻";
 			this.btnRefresh.UseVisualStyleBackColor = true;
+			this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
 			// 
 			// btnUp
 			// 
