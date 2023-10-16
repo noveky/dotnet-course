@@ -219,10 +219,8 @@ namespace Assignment4
 		{
 			if (e.Node == null) return;
 
-			foreach (TreeNode node in e.Node.Nodes)
-			{
-				RemoveSubnodes(node);
-			}
+			RemoveSubnodes(e.Node);
+			GenerateSubnodes(e.Node);
 		}
 
 		private void trvHierarchy_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
