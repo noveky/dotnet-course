@@ -61,6 +61,18 @@
 对 C# 代码进行处理，去除 `//` 开头的注释，划分其中的英文单词，并统计词频
 
 > 匹配单词的正则表达式：`((?<![0-9][A-Za-z]*)[A-Z]?[a-z]+)|((?<![0-9][A-Za-z]*)[A-Z]+(?![a-z]+))`
+> 
+> 例：
+> ```
+> abcDEFGhiJKL
+> AbcDefGHIJkl
+> 0xBCD8AB95
+> 1Aaa1 2aAa2 3aaA3
+> ```
+> 匹配到的单词：
+> ```
+> abc DEF Ghi JKL Abc Def GHI Jkl
+> ```
 
 - 打开 `.cs` 文件
 

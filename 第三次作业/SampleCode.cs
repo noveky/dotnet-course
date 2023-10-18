@@ -1,4 +1,4 @@
-﻿using System; // 123456
+using System; // 123456
 using System.Collections.Generic; // 234567
 using System.Linq;
 using System.Text;
