@@ -63,16 +63,16 @@
 > 匹配单词的正则表达式：`((?<![0-9][A-Za-z]*)[A-Z]?[a-z]+)|((?<![0-9][A-Za-z]*)[A-Z]+(?![a-z]+))`
 > 
 > 例：
-> ```
-> abcDEFGhiJKL
-> AbcDefGHIJkl
-> 0xBCD8AB95
-> 1Aaa1 2aAa2 3aaA3
-> ```
-> 匹配到的单词：
-> ```
-> abc DEF Ghi JKL Abc Def GHI Jkl
-> ```
+> > ```
+> > abcDEFGhiJKL
+> > AbcDefGHIJkl
+> > 0xBCD8AB95
+> > 1Aaa1 2aAa2 3aaA3
+> > ```
+> > 匹配到的单词：
+> > ```
+> > abc DEF Ghi JKL Abc Def GHI Jkl
+> > ```
 
 - 打开 `.cs` 文件
 
