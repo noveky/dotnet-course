@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment3", "Assignment3\Assignment3.csproj", "{B7FECFF0-5B29-438F-BC02-9291B892364A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeProcessor", "CodeProcessor\CodeProcessor.csproj", "{B7FECFF0-5B29-438F-BC02-9291B892364A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

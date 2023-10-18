@@ -201,7 +201,7 @@
 			this.trvHierarchy.TabStop = false;
 			this.trvHierarchy.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.trvHierarchy_AfterCollapse);
 			this.trvHierarchy.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.trvHierarchy_AfterExpand);
-			this.trvHierarchy.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.trvHierarchy_NodeMouseClick);
+			this.trvHierarchy.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trvHierarchy_AfterSelect);
 			// 
 			// lstDir
 			// 
