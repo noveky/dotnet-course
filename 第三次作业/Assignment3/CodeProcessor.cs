@@ -9,7 +9,7 @@ namespace Assignment3
 {
 	partial class CodeProcessor
 	{
-		// 按要求格式化代码，即去掉空行和注释（仅考虑“//”开头的，且不考虑包含在字符串中等复杂情况）
+		// 按要求格式化代码，即去掉空行和注释（仅考虑以“//”开头的，且不考虑包含在字符串中等复杂情况）
 		public static string Format(string code)
 		{
 			string[] lines = code.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
