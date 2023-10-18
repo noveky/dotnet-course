@@ -18,7 +18,7 @@
 
 输入正整数，输出其质因数分解结果
 
-> ![](第一次作业/运行截图/PrimeFactors-1.png)
+> ![](%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/PrimeFactors-1.png)
 
 #### 口算自动出题机
 
@@ -26,15 +26,15 @@
 
 - 倒计时结束时提交本题，展示答题是否正确，并自动下一题
 
-> ![](第一次作业/运行截图/ProblemGenerator-1.png)
+> ![](%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/ProblemGenerator-1.png)
 
 - 答题错误时显示红色
 
-> ![](第一次作业/运行截图/ProblemGenerator-2.png)
+> ![](%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/ProblemGenerator-2.png)
 
 - 完成所有题目后交卷，统计得分
 
-> ![](第一次作业/运行截图/ProblemGenerator-3.png)
+> ![](%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/ProblemGenerator-3.png)
 
 ### 第二次作业
 
@@ -44,15 +44,15 @@
 
 - 账户验证
 
-> ![](第二次作业/运行截图/1.png)
+> ![](%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/1.png)
 
 - 存取款
 
-> ![](第二次作业/运行截图/2.png)
+> ![](%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/2.png)
 
 - 大额取款警告
 
-> ![](第二次作业/运行截图/3.png)
+> ![](%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/3.png)
 
 ### 第三次作业
 
@@ -76,15 +76,15 @@
 
 - 打开 `.cs` 文件
 
-> ![](第三次作业/运行截图/1.png)
+> ![](%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%BD%9C%E4%B8%9A/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/1.png)
 
 - 显示代码内容
 
-> ![](第三次作业/运行截图/2.png)
+> ![](%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%BD%9C%E4%B8%9A/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/2.png)
 
 - 去除注释，分词，统计词频
 
-> ![](第三次作业/运行截图/3.png)
+> ![](%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%BD%9C%E4%B8%9A/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/3.png)
 
 ### 第四次作业
 
@@ -96,16 +96,16 @@
 
 - 展开目录结点
 
-> ![](第四次作业/运行截图/1.png)
+> ![](%E7%AC%AC%E5%9B%9B%E6%AC%A1%E4%BD%9C%E4%B8%9A/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/1.png)
 
 - 双击打开文件
 
-> ![](第四次作业/运行截图/2.png)
+> ![](%E7%AC%AC%E5%9B%9B%E6%AC%A1%E4%BD%9C%E4%B8%9A/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/2.png)
 
 - 通过下拉框访问历史记录，或按【←】【→】按钮在历史记录中跳转
 
-> ![](第四次作业/运行截图/3.png)
+> ![](%E7%AC%AC%E5%9B%9B%E6%AC%A1%E4%BD%9C%E4%B8%9A/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/3.png)
 
 - 更改显示方式
 
-> ![](第四次作业/运行截图/4.png)
+> ![](%E7%AC%AC%E5%9B%9B%E6%AC%A1%E4%BD%9C%E4%B8%9A/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/4.png)
