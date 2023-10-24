@@ -31,13 +31,19 @@
 			this.cboSearchEngine = new System.Windows.Forms.ComboBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.txtKeywords = new System.Windows.Forms.TextBox();
-			this.btnExecute = new System.Windows.Forms.Button();
+			this.btnStart = new System.Windows.Forms.Button();
 			this.cboPattern = new System.Windows.Forms.ComboBox();
 			this.txtRegex = new System.Windows.Forms.TextBox();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
-			this.tabPageResults = new System.Windows.Forms.TabPage();
+			this.tabPageMatches = new System.Windows.Forms.TabPage();
+			this.lstMatches = new System.Windows.Forms.ListView();
+			this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+			this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
 			this.tabPageUrls = new System.Windows.Forms.TabPage();
+			this.lstCrawledUrls = new System.Windows.Forms.ListView();
 			this.tabControl1.SuspendLayout();
+			this.tabPageMatches.SuspendLayout();
+			this.tabPageUrls.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// cboSearchEngine
@@ -68,15 +74,16 @@
 			this.txtKeywords.Size = new System.Drawing.Size(744, 23);
 			this.txtKeywords.TabIndex = 2;
 			// 
-			// btnExecute
+			// btnStart
 			// 
-			this.btnExecute.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnExecute.Location = new System.Drawing.Point(766, 43);
-			this.btnExecute.Name = "btnExecute";
-			this.btnExecute.Size = new System.Drawing.Size(75, 23);
-			this.btnExecute.TabIndex = 3;
-			this.btnExecute.Text = "执行";
-			this.btnExecute.UseVisualStyleBackColor = true;
+			this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnStart.Location = new System.Drawing.Point(766, 43);
+			this.btnStart.Name = "btnStart";
+			this.btnStart.Size = new System.Drawing.Size(75, 23);
+			this.btnStart.TabIndex = 3;
+			this.btnStart.Text = "开始";
+			this.btnStart.UseVisualStyleBackColor = true;
+			this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
 			// 
 			// cboPattern
 			// 
@@ -103,7 +110,7 @@
 			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tabControl1.Controls.Add(this.tabPageResults);
+			this.tabControl1.Controls.Add(this.tabPageMatches);
 			this.tabControl1.Controls.Add(this.tabPageUrls);
 			this.tabControl1.Location = new System.Drawing.Point(12, 74);
 			this.tabControl1.Name = "tabControl1";
@@ -111,18 +118,45 @@
 			this.tabControl1.Size = new System.Drawing.Size(829, 499);
 			this.tabControl1.TabIndex = 6;
 			// 
-			// tabPageResults
+			// tabPageMatches
 			// 
-			this.tabPageResults.Location = new System.Drawing.Point(4, 26);
-			this.tabPageResults.Name = "tabPageResults";
-			this.tabPageResults.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageResults.Size = new System.Drawing.Size(821, 469);
-			this.tabPageResults.TabIndex = 0;
-			this.tabPageResults.Text = "爬取结果";
-			this.tabPageResults.UseVisualStyleBackColor = true;
+			this.tabPageMatches.Controls.Add(this.lstMatches);
+			this.tabPageMatches.Location = new System.Drawing.Point(4, 26);
+			this.tabPageMatches.Name = "tabPageMatches";
+			this.tabPageMatches.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPageMatches.Size = new System.Drawing.Size(821, 469);
+			this.tabPageMatches.TabIndex = 0;
+			this.tabPageMatches.Text = "匹配";
+			this.tabPageMatches.UseVisualStyleBackColor = true;
+			// 
+			// lstMatches
+			// 
+			this.lstMatches.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+			this.lstMatches.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lstMatches.FullRowSelect = true;
+			this.lstMatches.GridLines = true;
+			this.lstMatches.Location = new System.Drawing.Point(3, 3);
+			this.lstMatches.Name = "lstMatches";
+			this.lstMatches.Size = new System.Drawing.Size(815, 463);
+			this.lstMatches.TabIndex = 0;
+			this.lstMatches.UseCompatibleStateImageBehavior = false;
+			this.lstMatches.View = System.Windows.Forms.View.Details;
+			// 
+			// columnHeader1
+			// 
+			this.columnHeader1.Text = "字符串";
+			this.columnHeader1.Width = 300;
+			// 
+			// columnHeader2
+			// 
+			this.columnHeader2.Text = "来源 URL";
+			this.columnHeader2.Width = 500;
 			// 
 			// tabPageUrls
 			// 
+			this.tabPageUrls.Controls.Add(this.lstCrawledUrls);
 			this.tabPageUrls.Location = new System.Drawing.Point(4, 26);
 			this.tabPageUrls.Name = "tabPageUrls";
 			this.tabPageUrls.Padding = new System.Windows.Forms.Padding(3);
@@ -131,22 +165,37 @@
 			this.tabPageUrls.Text = "已爬取的 URL";
 			this.tabPageUrls.UseVisualStyleBackColor = true;
 			// 
+			// lstCrawledUrls
+			// 
+			this.lstCrawledUrls.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lstCrawledUrls.FullRowSelect = true;
+			this.lstCrawledUrls.GridLines = true;
+			this.lstCrawledUrls.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+			this.lstCrawledUrls.Location = new System.Drawing.Point(3, 3);
+			this.lstCrawledUrls.Name = "lstCrawledUrls";
+			this.lstCrawledUrls.Size = new System.Drawing.Size(815, 463);
+			this.lstCrawledUrls.TabIndex = 0;
+			this.lstCrawledUrls.UseCompatibleStateImageBehavior = false;
+			this.lstCrawledUrls.View = System.Windows.Forms.View.Details;
+			// 
 			// MainForm
 			// 
-			this.AcceptButton = this.btnExecute;
+			this.AcceptButton = this.btnStart;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(853, 585);
 			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.txtRegex);
 			this.Controls.Add(this.cboPattern);
-			this.Controls.Add(this.btnExecute);
+			this.Controls.Add(this.btnStart);
 			this.Controls.Add(this.txtKeywords);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.cboSearchEngine);
 			this.Name = "MainForm";
 			this.Text = "爬虫程序";
 			this.tabControl1.ResumeLayout(false);
+			this.tabPageMatches.ResumeLayout(false);
+			this.tabPageUrls.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -155,12 +204,16 @@
 		private ComboBox cboSearchEngine;
 		private Label label1;
 		private TextBox txtKeywords;
-		private Button btnExecute;
+		private Button btnStart;
 		private ComboBox cboPattern;
 		private TextBox txtRegex;
 		private TabControl tabControl1;
-		private TabPage tabPageResults;
+		private TabPage tabPageMatches;
 		private TabPage tabPageUrls;
+		private ListView lstMatches;
+		private ColumnHeader columnHeader1;
+		private ColumnHeader columnHeader2;
+		private ListView lstCrawledUrls;
 	}
 
 	#endregion
