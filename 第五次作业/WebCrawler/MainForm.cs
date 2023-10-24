@@ -18,12 +18,12 @@ namespace WebCrawler
 
 		class SearchEngine : ComboBoxItem
 		{
-			public static SearchEngine Google = new("Google", "https://www.google.com/search?q=");
-			public static SearchEngine Bing = new("Bing", "https://www.bing.com/search?q=");
-			public static SearchEngine Baidu = new("Baidu", "https://www.baidu.com/s?wd=");
+			public static SearchEngine Bing = new("Bing", "https://www.bing.com/search?q={0}");
+			public static SearchEngine Google = new("Google", "https://www.google.com/search?q={0}");
+			public static SearchEngine Baidu = new("Baidu", "https://www.baidu.com/s?wd={0}");
 
 			public string Name => ToString();
-			public string UrlPrefix => (string)Tag!;
+			public string UrlFormat => (string)Tag!;
 
 			public SearchEngine(string name, string urlPrefix)
 			{
@@ -35,7 +35,7 @@ namespace WebCrawler
 		class Pattern : ComboBoxItem
 		{
 			public static Pattern Custom = new("自定义", string.Empty);
-			public static Pattern PhoneNumber = new("电话号码", @"/^(?:((0\d{2,3}-)|(400))?\d{7,8}|1[3-9]\d{9})$/");
+			public static Pattern PhoneNumber = new("电话号码", @"((0\d{2,3}-\d{7,8})|(400[\d\-]{7,9})|1[3-9]\d{9})");
 
 			public string Name => ToString();
 			public string Regex => (string)Tag!;
@@ -55,27 +55,42 @@ namespace WebCrawler
 		{
 			InitializeComponent();
 
-			cboSearchEngine.Items.AddRange(new[] { SearchEngine.Google, SearchEngine.Bing, SearchEngine.Baidu });
+			cboSearchEngine.Items.AddRange(new[] { SearchEngine.Bing, SearchEngine.Google, SearchEngine.Baidu });
 			cboPattern.Items.AddRange(new[] { Pattern.Custom, Pattern.PhoneNumber });
 
 			cboSearchEngine.SelectedIndex = 0;
 			cboPattern.SelectedIndex = 0;
 		}
 
-		async void Start()
+		async Task Start()
 		{
-			crawler = new(CurrentEngine.UrlPrefix, txtKeywords.Text, txtRegex.Text);
-			await crawler.Launch();
-			btnStart.Enabled = true;
-			btnStart.Text = "开始";
+			crawler = new(CurrentEngine.UrlFormat, txtKeywords.Text, txtRegex.Text, 100, 100);
+			//crawler.OnUpdate += UpdateDisplay;
+			UpdateDisplay();
+			try
+			{
+				await crawler.Launch();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+			UpdateDisplay();
+			crawler = null;
+			UpdateDisplay();
 		}
 
-		void UpdateLists()
+		void UpdateDisplay()
 		{
+			btnStart.Enabled = crawler == null;
+			btnStart.Text = crawler == null ? "开始" : "运行中";
+
+			if (crawler == null) return;
+
 			lstMatches.EndUpdate();
 			lstMatches.BeginUpdate();
 			lstMatches.Items.Clear();
-			foreach (var match in crawler!.Matches)
+			foreach (var match in crawler.Matches)
 			{
 				ListViewItem matchItem = new(match.MatchStr);
 				matchItem.SubItems.Add(match.SrcUrl);
@@ -88,7 +103,7 @@ namespace WebCrawler
 			lstCrawledUrls.Items.Clear();
 			foreach (string url in crawler.CrawledUrls)
 			{
-				lstMatches.Items.Add(url);
+				lstCrawledUrls.Items.Add(url);
 			}
 			lstCrawledUrls.EndUpdate();
 		}
@@ -102,11 +117,9 @@ namespace WebCrawler
 			}
 		}
 
-		private void btnStart_Click(object sender, EventArgs e)
+		private async void btnStart_Click(object sender, EventArgs e)
 		{
-			btnStart.Enabled = false;
-			btnStart.Text = "运行中";
-			Start();
+			await Start();
 		}
 	}
 }

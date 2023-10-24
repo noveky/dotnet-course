@@ -41,6 +41,7 @@
 			this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
 			this.tabPageUrls = new System.Windows.Forms.TabPage();
 			this.lstCrawledUrls = new System.Windows.Forms.ListView();
+			this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
 			this.tabControl1.SuspendLayout();
 			this.tabPageMatches.SuspendLayout();
 			this.tabPageUrls.SuspendLayout();
@@ -71,13 +72,13 @@
 			this.txtKeywords.Location = new System.Drawing.Point(97, 12);
 			this.txtKeywords.Name = "txtKeywords";
 			this.txtKeywords.PlaceholderText = "输入关键词";
-			this.txtKeywords.Size = new System.Drawing.Size(744, 23);
+			this.txtKeywords.Size = new System.Drawing.Size(793, 23);
 			this.txtKeywords.TabIndex = 2;
 			// 
 			// btnStart
 			// 
 			this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnStart.Location = new System.Drawing.Point(766, 43);
+			this.btnStart.Location = new System.Drawing.Point(815, 43);
 			this.btnStart.Name = "btnStart";
 			this.btnStart.Size = new System.Drawing.Size(75, 23);
 			this.btnStart.TabIndex = 3;
@@ -102,7 +103,7 @@
 			this.txtRegex.Location = new System.Drawing.Point(176, 43);
 			this.txtRegex.Name = "txtRegex";
 			this.txtRegex.PlaceholderText = "输入正则表达式";
-			this.txtRegex.Size = new System.Drawing.Size(584, 23);
+			this.txtRegex.Size = new System.Drawing.Size(633, 23);
 			this.txtRegex.TabIndex = 5;
 			// 
 			// tabControl1
@@ -115,7 +116,7 @@
 			this.tabControl1.Location = new System.Drawing.Point(12, 74);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(829, 499);
+			this.tabControl1.Size = new System.Drawing.Size(878, 589);
 			this.tabControl1.TabIndex = 6;
 			// 
 			// tabPageMatches
@@ -124,7 +125,7 @@
 			this.tabPageMatches.Location = new System.Drawing.Point(4, 26);
 			this.tabPageMatches.Name = "tabPageMatches";
 			this.tabPageMatches.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageMatches.Size = new System.Drawing.Size(821, 469);
+			this.tabPageMatches.Size = new System.Drawing.Size(870, 559);
 			this.tabPageMatches.TabIndex = 0;
 			this.tabPageMatches.Text = "匹配";
 			this.tabPageMatches.UseVisualStyleBackColor = true;
@@ -139,7 +140,7 @@
 			this.lstMatches.GridLines = true;
 			this.lstMatches.Location = new System.Drawing.Point(3, 3);
 			this.lstMatches.Name = "lstMatches";
-			this.lstMatches.Size = new System.Drawing.Size(815, 463);
+			this.lstMatches.Size = new System.Drawing.Size(864, 553);
 			this.lstMatches.TabIndex = 0;
 			this.lstMatches.UseCompatibleStateImageBehavior = false;
 			this.lstMatches.View = System.Windows.Forms.View.Details;
@@ -160,30 +161,37 @@
 			this.tabPageUrls.Location = new System.Drawing.Point(4, 26);
 			this.tabPageUrls.Name = "tabPageUrls";
 			this.tabPageUrls.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageUrls.Size = new System.Drawing.Size(821, 469);
+			this.tabPageUrls.Size = new System.Drawing.Size(841, 484);
 			this.tabPageUrls.TabIndex = 1;
 			this.tabPageUrls.Text = "已爬取的 URL";
 			this.tabPageUrls.UseVisualStyleBackColor = true;
 			// 
 			// lstCrawledUrls
 			// 
+			this.lstCrawledUrls.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader3});
 			this.lstCrawledUrls.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.lstCrawledUrls.FullRowSelect = true;
 			this.lstCrawledUrls.GridLines = true;
 			this.lstCrawledUrls.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
 			this.lstCrawledUrls.Location = new System.Drawing.Point(3, 3);
 			this.lstCrawledUrls.Name = "lstCrawledUrls";
-			this.lstCrawledUrls.Size = new System.Drawing.Size(815, 463);
+			this.lstCrawledUrls.Size = new System.Drawing.Size(835, 478);
 			this.lstCrawledUrls.TabIndex = 0;
 			this.lstCrawledUrls.UseCompatibleStateImageBehavior = false;
 			this.lstCrawledUrls.View = System.Windows.Forms.View.Details;
+			// 
+			// columnHeader3
+			// 
+			this.columnHeader3.Text = "URL";
+			this.columnHeader3.Width = 800;
 			// 
 			// MainForm
 			// 
 			this.AcceptButton = this.btnStart;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(853, 585);
+			this.ClientSize = new System.Drawing.Size(902, 675);
 			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.txtRegex);
 			this.Controls.Add(this.cboPattern);
@@ -214,6 +222,7 @@
 		private ColumnHeader columnHeader1;
 		private ColumnHeader columnHeader2;
 		private ListView lstCrawledUrls;
+		private ColumnHeader columnHeader3;
 	}
 
 	#endregion
