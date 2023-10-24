@@ -35,7 +35,7 @@ namespace WebCrawler
 		class Pattern : ComboBoxItem
 		{
 			public static Pattern Custom = new("自定义", string.Empty);
-			public static Pattern PhoneNumber = new("电话号码", @"((0\d{2,3}-\d{7,8})|(400[\d\-]{7,9})|1[3-9]\d{9})");
+			public static Pattern PhoneNumber = new("电话号码", @"(0\d{2,3}-\d{7,8})|(400[\d\-]{7,9})|(1[3-9]\d-\d{4}-\d{4})|(1[3-9]\d{9})");
 
 			public string Name => ToString();
 			public string Regex => (string)Tag!;
