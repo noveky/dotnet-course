@@ -28,11 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Text = "Form1";
-
 			this.cboSearchEngine = new System.Windows.Forms.ComboBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.txtKeywords = new System.Windows.Forms.TextBox();
@@ -41,7 +36,7 @@
 			this.txtRegex = new System.Windows.Forms.TextBox();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPageResults = new System.Windows.Forms.TabPage();
-			this.tabPageURLs = new System.Windows.Forms.TabPage();
+			this.tabPageUrls = new System.Windows.Forms.TabPage();
 			this.tabControl1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -65,8 +60,8 @@
 			// 
 			// txtKeywords
 			// 
-			this.txtKeywords.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-			| System.Windows.Forms.AnchorStyles.Right)));
+			this.txtKeywords.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtKeywords.Location = new System.Drawing.Point(97, 12);
 			this.txtKeywords.Name = "txtKeywords";
 			this.txtKeywords.PlaceholderText = "输入关键词";
@@ -91,11 +86,12 @@
 			this.cboPattern.Name = "cboPattern";
 			this.cboPattern.Size = new System.Drawing.Size(108, 25);
 			this.cboPattern.TabIndex = 4;
+			this.cboPattern.SelectedValueChanged += new System.EventHandler(this.cboPattern_SelectedValueChanged);
 			// 
 			// txtRegex
 			// 
-			this.txtRegex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-			| System.Windows.Forms.AnchorStyles.Right)));
+			this.txtRegex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtRegex.Location = new System.Drawing.Point(176, 43);
 			this.txtRegex.Name = "txtRegex";
 			this.txtRegex.PlaceholderText = "输入正则表达式";
@@ -104,11 +100,11 @@
 			// 
 			// tabControl1
 			// 
-			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-			| System.Windows.Forms.AnchorStyles.Left)
-			| System.Windows.Forms.AnchorStyles.Right)));
+			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.tabControl1.Controls.Add(this.tabPageResults);
-			this.tabControl1.Controls.Add(this.tabPageURLs);
+			this.tabControl1.Controls.Add(this.tabPageUrls);
 			this.tabControl1.Location = new System.Drawing.Point(12, 74);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
@@ -125,19 +121,21 @@
 			this.tabPageResults.Text = "爬取结果";
 			this.tabPageResults.UseVisualStyleBackColor = true;
 			// 
-			// tabPageURLs
+			// tabPageUrls
 			// 
-			this.tabPageURLs.Location = new System.Drawing.Point(4, 26);
-			this.tabPageURLs.Name = "tabPageURLs";
-			this.tabPageURLs.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageURLs.Size = new System.Drawing.Size(821, 469);
-			this.tabPageURLs.TabIndex = 1;
-			this.tabPageURLs.Text = "已爬取的 URL";
-			this.tabPageURLs.UseVisualStyleBackColor = true;
+			this.tabPageUrls.Location = new System.Drawing.Point(4, 26);
+			this.tabPageUrls.Name = "tabPageUrls";
+			this.tabPageUrls.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPageUrls.Size = new System.Drawing.Size(821, 469);
+			this.tabPageUrls.TabIndex = 1;
+			this.tabPageUrls.Text = "已爬取的 URL";
+			this.tabPageUrls.UseVisualStyleBackColor = true;
 			// 
 			// MainForm
 			// 
 			this.AcceptButton = this.btnExecute;
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(853, 585);
 			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.txtRegex);
@@ -162,7 +160,7 @@
 		private TextBox txtRegex;
 		private TabControl tabControl1;
 		private TabPage tabPageResults;
-		private TabPage tabPageURLs;
+		private TabPage tabPageUrls;
 	}
 
 	#endregion
