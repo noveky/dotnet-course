@@ -9,7 +9,9 @@ namespace SchoolDataSystem.Repository
 		private readonly SQLiteConnection connection;
 		private readonly SQLiteCommand command;
 
-		public Dao(string? sql, object? @params)
+		readonly bool forLogging;
+
+		public Dao(string? sql, object? @params, bool forLogging = false)
 		{
 			connection = new SQLiteConnection("Data Source=school_db.db;Version=3;");
 			command = connection.CreateCommand();
@@ -36,6 +38,8 @@ namespace SchoolDataSystem.Repository
 				}
 			}
 			paramMap.ToList().ForEach(p => command.Parameters.AddWithValue($"${p.Key}", p.Value));
+
+			this.forLogging = forLogging;
 		}
 
 		public object? QuerySingleValue()
@@ -49,7 +53,7 @@ namespace SchoolDataSystem.Repository
 			}
 			finally
 			{
-				Close();
+				LogAndClose();
 			}
 		}
 
@@ -75,7 +79,7 @@ namespace SchoolDataSystem.Repository
 			finally
 			{
 				reader?.Close();
-				Close();
+				LogAndClose();
 			}
 		}
 
@@ -89,12 +93,19 @@ namespace SchoolDataSystem.Repository
 			}
 			finally
 			{
-				Close();
+				LogAndClose();
 			}
 		}
 
-		void Close()
+		void LogAndClose()
 		{
+			if (!forLogging)
+			{
+				new Dao("INSERT INTO log (log_operation) VALUES ($logOperation)",
+					@params: new { logOperation = command.CommandText },
+					forLogging: false)
+					.ExecuteNonQuery();
+			}
 			command.Dispose();
 			connection.Close();
 		}
