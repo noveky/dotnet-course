@@ -1,0 +1,25 @@
+﻿CREATE TABLE school (
+	school_id CHAR(36) NOT NULL,
+	school_name VARCHAR(255) NOT NULL,
+	PRIMARY KEY (school_id)
+);
+CREATE TABLE class (
+	class_grade INT NOT NULL,
+	class_num INT NOT NULL,
+	class_school_id INT NOT NULL,
+	PRIMARY KEY (class_grade, class_num),
+	FOREIGN KEY (class_school_id) REFERENCES school(school_id) ON DELETE CASCADE
+);
+CREATE TABLE student (
+	student_id CHAR(8) NOT NULL,
+	student_name VARCHAR(255) NOT NULL,
+	student_class_grade INT NOT NULL,
+	student_class_num INT NOT NULL,
+	PRIMARY KEY (student_id),
+	FOREIGN KEY (student_class_grade) REFERENCES class(class_grade) ON DELETE CASCADE,
+	FOREIGN KEY (student_class_num) REFERENCES class(class_num) ON DELETE CASCADE
+);
+CREATE TABLE log (
+	log_time DATETIME DEFAULT (DATETIME('now')),
+	log_operation TEXT NOT NULL
+);

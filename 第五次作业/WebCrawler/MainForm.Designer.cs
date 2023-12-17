@@ -161,7 +161,7 @@
 			this.tabPageUrls.Location = new System.Drawing.Point(4, 26);
 			this.tabPageUrls.Name = "tabPageUrls";
 			this.tabPageUrls.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageUrls.Size = new System.Drawing.Size(841, 484);
+			this.tabPageUrls.Size = new System.Drawing.Size(870, 559);
 			this.tabPageUrls.TabIndex = 1;
 			this.tabPageUrls.Text = "已爬取的 URL";
 			this.tabPageUrls.UseVisualStyleBackColor = true;
@@ -176,7 +176,7 @@
 			this.lstCrawledUrls.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
 			this.lstCrawledUrls.Location = new System.Drawing.Point(3, 3);
 			this.lstCrawledUrls.Name = "lstCrawledUrls";
-			this.lstCrawledUrls.Size = new System.Drawing.Size(835, 478);
+			this.lstCrawledUrls.Size = new System.Drawing.Size(864, 553);
 			this.lstCrawledUrls.TabIndex = 0;
 			this.lstCrawledUrls.UseCompatibleStateImageBehavior = false;
 			this.lstCrawledUrls.View = System.Windows.Forms.View.Details;

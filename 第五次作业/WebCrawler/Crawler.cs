@@ -12,7 +12,8 @@ namespace WebCrawler
 {
 	partial class Crawler
 	{
-		public event Action OnUpdate = () => { };
+		public event Action<string, string> Matched = (_, __) => { };
+		public event Action<string> CrawledUrl = _ => { };
 
 		public List<(string MatchStr, string SrcUrl)> Matches = new();
 		public HashSet<string> MatchSet = new();
@@ -56,31 +57,42 @@ namespace WebCrawler
 			{
 				HttpClient httpClient = new();
 				string html = await httpClient.GetStringAsync(url);
-				Regex.Matches(html, RegexPattern)
-					.Select(m => m.Value)
-					.ToList()
-					.ForEach(s =>
-					{
-						lock (MatchSet)
-						{
-							if (Matches.Count < MaxMatchCount && !MatchSet.Contains(s))
-							{
-								Matches.Add((MatchStr: s, SrcUrl: url));
-								MatchSet.Add(s);
-							}
-						}
-					});
+				Parse(html, url);
+
+				bool flag = false;
 				lock (CrawledUrlSet)
 				{
 					if (!CrawledUrlSet.Contains(url))
 					{
 						CrawledUrls.Add(url);
 						CrawledUrlSet.Add(url);
+						flag = true;
 					}
 				}
-				OnUpdate.Invoke();
+				if (flag) CrawledUrl.Invoke(url);
 			}
 			catch { }
+		}
+
+		public void Parse(string html, string srcUrl)
+		{
+			Regex.Matches(html, RegexPattern)
+				.Select(m => m.Value)
+				.ToList()
+				.ForEach(s =>
+				{
+					bool flag = false;
+					lock (MatchSet)
+					{
+						if (Matches.Count < MaxMatchCount && !MatchSet.Contains(s))
+						{
+							Matches.Add((MatchStr: s, SrcUrl: srcUrl));
+							MatchSet.Add(s);
+							flag = true;
+						}
+					}
+					if (flag) Matched.Invoke(s, srcUrl);
+				});
 		}
 
 		[GeneratedRegex("(?<=(href|HREF)=\")[^\"]+")]
