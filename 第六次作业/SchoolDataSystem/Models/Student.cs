@@ -8,7 +8,7 @@ namespace SchoolDataSystem.Models
 		public static Student? GetEntity(string? studentId)
 			=> studentId is null ? null : Query(studentId, null, null).FirstOrDefault();
 
-		public static IEnumerable<Student> Query(string? studentId, int? classGrade, int? classNum)
+		public static IEnumerable<Student> Query(string? studentId = null, int? classGrade = null, int? classNum = null)
 		{
 			List<string> selectList = new() { "student.*", "student_class.*" },
 				fromList = new()

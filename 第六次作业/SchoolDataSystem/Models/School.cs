@@ -8,7 +8,7 @@ namespace SchoolDataSystem.Models
 		public static School? GetEntity(Guid? schoolId)
 			=> schoolId is null ? null : Query(schoolId).FirstOrDefault();
 
-		public static IEnumerable<School> Query(Guid? schoolId)
+		public static IEnumerable<School> Query(Guid? schoolId = null)
 		{
 			List<string> selectList = new() { "school.*" },
 				fromList = new() { "school" },

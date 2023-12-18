@@ -1,4 +1,6 @@
 ﻿using SchoolDataSystem.Repository;
+using System.Diagnostics;
+using System.Xml.Linq;
 
 namespace SchoolDataSystem.Models
 {
@@ -14,6 +16,8 @@ namespace SchoolDataSystem.Models
 
 			return new School { Id = id, Name = name };
 		}
+
+		public override string? ToString() => $"{Name}";
 	}
 
 	public partial class Class
@@ -30,6 +34,8 @@ namespace SchoolDataSystem.Models
 
 			return new Class { Grade = grade, Num = num, School = school };
 		}
+
+		public override string? ToString() => $"{Grade} 年级 {Num} 班";
 	}
 
 	public partial class Student
@@ -46,5 +52,7 @@ namespace SchoolDataSystem.Models
 
 			return new Student { Id = id, Name = name, Class = @class };
 		}
+
+		public override string? ToString() => $"{Name}";
 	}
 }
